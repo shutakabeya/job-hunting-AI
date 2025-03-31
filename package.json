@@ -1,0 +1,36 @@
+{
+  "name": "job-hunting-ai",
+  "version": "1.0.0",
+  "description": "自己分析 × 企業選び × 行動最適化をサポートする就活AIエージェント",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd my-app && npm run dev",
+    "build": "cd my-app && npm run build",
+    "start": "cd my-app && npm run start",
+    "lint": "cd my-app && npm run lint",
+    "setup": "node my-app/setup.js"
+  },
+  "keywords": [
+    "job-hunting",
+    "ai",
+    "next.js",
+    "supabase"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "crewai": "^1.0.1",
+    "csv-parse": "^5.6.0",
+    "next": "^15.2.3",
+    "next-themes": "^0.4.6",
+    "openai": "^4.90.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwind-scrollbar": "^4.0.2",
+    "zustand": "^5.0.3"
+  }
+}
