@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 就活AIエージェント
 
-## Getting Started
+「自己分析 × 企業選び × 行動最適化」をサポートする就活AIエージェントプロジェクトです。
 
-First, run the development server:
+## 🎯 プロジェクト概要
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- AI駆動の就活支援ツールとして、対話型インターフェースを提供
+- 自己分析、企業選び、行動最適化をサポート
+- Next.js 14とモダンなフロントエンド技術を活用
+
+## 🛠️ 技術スタック
+
+- **Next.js 14**（App Router）
+- **Tailwind CSS**（レスポンシブデザイン）
+- **Zustand**（状態管理）
+- **Supabase**（データベース・認証）
+- **Vercel**（フロントエンドデプロイ）
+
+## 🚀 セットアップ方法
+
+1. リポジトリをクローン
+   ```
+   git clone <repository-url>
+   cd job-hunting-ai
+   ```
+
+2. 依存関係のインストール
+   ```
+   npm install
+   ```
+
+3. 環境変数の設定
+   `.env.local`ファイルにSupabaseの認証情報を設定してください：
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+   ```
+
+4. 開発サーバーの起動
+   ```
+   npm run dev
+   ```
+
+5. ブラウザで以下のURLにアクセス
+   ```
+   http://localhost:3000
+   ```
+
+## 📁 プロジェクト構造
+
+```
+job-hunting-ai/
+├── src/
+│   ├── app/           # Next.js App Router
+│   ├── components/    # 再利用可能なコンポーネント
+│   ├── hooks/         # カスタムフック
+│   ├── store/         # Zustand状態管理
+│   └── utils/         # ユーティリティ関数（Supabaseクライアントなど）
+├── public/            # 静的ファイル
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 開発ガイドライン
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- コンポーネントは`src/components`ディレクトリに配置
+- 状態管理は`src/store`のZustandストアを使用
+- データベース操作は`src/utils/supabase.js`のクライアントを使用
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔧 セットアップスクリプト
 
-## Learn More
+プロジェクトルートにある`setup.js`を実行することで、必要な依存関係のインストールやディレクトリ構造の作成を自動化できます：
 
-To learn more about Next.js, take a look at the following resources:
+```
+node setup.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 ライセンス
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
