@@ -7,10 +7,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY') || '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';
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || 'https://vzmdxtkeyyzmdkaslemt.supabase.co';
-const SUPABASE_ANON_KEY = Deno.env.get('SUPABASE_ANON_KEY') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6bWR4dGtleXl6bWRrYXNsZW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxOTIyNTAsImV4cCI6MjA1Nzc2ODI1MH0.JDFa7BH2eneg4W-ChwQpTg7MLfDm86AmFHXwBBsBNDg';
-
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
@@ -19,8 +15,13 @@ serve(async (req) => {
   try {
     const { todoId } = await req.json();
 
-    const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Supabaseクライアントの初期化
+    const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? ''
+    );
 
+    // ToDoデータの取得
     const { data: todo, error: todoError } = await supabaseClient
       .from('todos')
       .select('*')
@@ -30,7 +31,7 @@ serve(async (req) => {
     if (todoError) throw todoError;
 
     const configuration = new Configuration({
-      apiKey: OPENAI_API_KEY,
+      apiKey: Deno.env.get('OPENAI_API_KEY'),
     });
     const openai = new OpenAIApi(configuration);
 
